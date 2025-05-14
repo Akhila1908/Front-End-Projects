@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ - Dance With Me USA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+    .header-img {
+      width: 100%;
+      height: 60px; /* Reduced height */
+      background: url('https://example.com/your-dance-image.jpg') no-repeat center center/cover;
+    }
+    h2 {
+      text-align: center;
+      padding: 15px 0 10px; /* Reduced top padding */
+      margin-top: 0; /* Remove default margin */
+    }
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px 20px; /* Added bottom padding */
+    }
+    .faq-item {
+      background-color: #1a1a1a;
+      margin: 10px 0;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 15px 20px;
+      cursor: pointer;
+      position: relative;
+    }
+    .faq-question:hover {
+      background-color: #222;
+    }
+    .faq-answer {
+      display: none;
+      padding: 10px 20px;
+      background-color: #222;
+      font-size: 14px;
+      color: #ccc;
+    }
+    .faq-question::after {
+      content: "\f078";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.3s;
+    }
+    .faq-item.active .faq-question::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-img"></div>
+
+  <h2>FAQ</h2>
+  <div class="faq-container">
+
+    <div class="faq-item">
+      <div class="faq-question">How do I get started?</div>
+      <div class="faq-answer">Visit our website and sign up for a class or membership that suits your level and goals.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Why should I learn to dance?</div>
+      <div class="faq-answer">Dancing improves physical fitness, mental well-being, coordination, and is a great way to socialize.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">What is the fastest way to become a better dancer?</div>
+      <div class="faq-answer">Consistent practice, feedback from instructors, and attending regular classes are key.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Is there an age limit or range?</div>
+      <div class="faq-answer">Absolutely not! We welcome all ages, from young children to seniors.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Do I need a partner?</div>
+      <div class="faq-answer">No, we rotate partners in class and also accommodate solo dancers.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">What should I wear for class?</div>
+      <div class="faq-answer">Comfortable clothes that allow movement. Athletic wear or dance attire works great.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Do I need dance shoes?</div>
+      <div class="faq-answer">Dance shoes are recommended but not required for beginners.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">How long does it take to learn to dance?</div>
+      <div class="faq-answer">It depends on your goals and commitment, but you can see progress in just a few weeks.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Group classes vs private lessons?</div>
+      <div class="faq-answer">Group classes are great for learning with others; private lessons offer personalized feedback and faster growth.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">What styles of dance do you offer?</div>
+      <div class="faq-answer">We offer ballroom, Latin, hip-hop, jazz, contemporary, and more.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Can I achieve fitness goals through dance?</div>
+      <div class="faq-answer">Absolutely! Dance improves cardiovascular health, muscle tone, and endurance.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Do you offer any specialized training?</div>
+      <div class="faq-answer">Yes, we provide competitive dance training, performance coaching, and workshops.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">Do you accept people with disabilities?</div>
+      <div class="faq-answer">Yes, our classes are inclusive and we accommodate all dancers to feel welcome and supported.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">What is your cancellation policy?</div>
+      <div class="faq-answer">You may cancel 24 hours in advance for a full refund or class credit.</div>
+    </div>
+
+  </div>
+
+  <script>
+    const items = document.querySelectorAll('.faq-item');
+
+    items.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        items.forEach(i => {
+          if (i !== item) i.classList.remove('active');
+        });
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

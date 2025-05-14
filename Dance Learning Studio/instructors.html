@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dance Masterclass</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      padding-top: 50px;
+    }
+    .carousel-item .col {
+      display: flex;
+      justify-content: center;
+    }
+    .card {
+      background-color: #1c1c1c;
+      border: none;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      border-radius: 10px 10px 0 0;
+    }
+    .card-title
+    {
+       color:white;
+    }
+     </style>
+</head>
+<body>
+
+<!-- Instructors Section -->
+<div class="container text-center">
+  <h2 class="mb-4">Who are the <strong>Instructors?</strong></h2>
+  <p class="mb-5">Dance Masterclass brings together the knowledge and skills of the world's top dance teachers and experts – <strong>all on one platform.</strong></p>
+
+  <div id="instructorCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card">
+              <img src="C:\Users\harsh\OneDrive\Desktop\fsd\ins1.png" class="img-fluid" alt="Instructor 1">
+              <div class="card-body">
+                <p class="card-title">Mackenzie Brown, born in Stafford, Virginia, is a principal dancer with Stuttgart Ballet and a Prix de Lausanne Gold Medal winner. She became one of the youngest first soloists globally and won the 2023 Erik Bruhn Prize for her outstanding artistry. </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <img src="C:\Users\harsh\OneDrive\Desktop\fsd\ins2.png" class="img-fluid" alt="Instructor 2">
+              <div class="card-body">
+                <p class="card-title">Renowned as a physiotherapist for dancers, author, and speaker, Lisa Howell has revolutionized the way dancers approach their bodies, injuries, and performance. She collaborates with leading and has lectured internationally.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <img src="C:\Users\harsh\OneDrive\Desktop\fsd\ins3.png" class="img-fluid" alt="Instructor 3">
+              <div class="card-body">
+                <p class="card-title">Daniil Simkin is one of the leading male soloists in the world. Some say that he is the best dancer on the planet, when it comes to turning pirouettes. For the first time in his life Daniil gives a full masterclass on the craft.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <img src="C:\Users\harsh\OneDrive\Desktop\fsd\ins4.png" class="img-fluid" alt="Instructor 4">
+              <div class="card-body">
+                <p class="card-title">Esteemed Étoile of the Paris Opera, Léonore overcame early rejection to become a renowned ballerina. With international accolades and prizes, she now shares her knowledge through this masterclass. Learn from her experiences and techniques.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card">
+              <img src="C:\Users\harsh\OneDrive\Desktop\fsd\ins5.png" class="img-fluid" alt="Instructor 5">
+              <div class="card-body">
+                <p class="card-title">An Emmy-winning teacher, and choreographer from NYC. Known for his creative style and storytelling through movement, he has worked on major stage, TV, and film productions. His teaching emphasizes self-expression and strong technique.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <img src="C:\Users\harsh\OneDrive\Desktop\fsd\ins6.png" class="img-fluid" alt="Instructor 6">
+              <div class="card-body">
+                <p class="card-title">Former Batsheva Dance Company dancer and Gaga movement language teacher, has a global impact as a choreographer and Ohad Naharin's assistant. Post-Batsheva, he initiated his international choreographic journey in 2016.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <img src="C:\Users\harsh\OneDrive\Desktop\fsd\ins7.png" class="img-fluid" alt="Instructor 7">
+              <div class="card-body">
+                <p class="card-title">Anna Ol, Principal dancer at Dutch National Ballet has performed major roles in classical repertoire and collaborated renowned choreographers like Jiří Kyli and Sir Kenneth MacMillan. She has won gold medals at competitions.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <img src="C:\Users\harsh\OneDrive\Desktop\fsd\ins8.png" class="img-fluid" alt="Instructor 8">
+              <div class="card-body">
+                <p class="card-title">Renowned for her role as Odette/Odile in Swan Lake, Polina Semionova is one of the 21st century's most iconic prima ballerinas. For the first time ever, Polina shares insights into her artistic process and reveals her secrets for creating.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Carousel controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#instructorCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#instructorCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+  </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

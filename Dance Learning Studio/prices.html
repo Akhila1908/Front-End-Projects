@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pricing - Rhythm Beats</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(to right, #4a1c6f, #1c3a47);
+      --card-1: linear-gradient(145deg, #ff9a9e, #fad0c4);
+      --card-2: linear-gradient(145deg, #a18cd1, #fbc2eb);
+      --card-3: linear-gradient(145deg, #fbc2eb, #a6c1ee);
+      --primary: #ffffff;
+      --text-light: #f1f1f1;
+      --shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-light);
+    }
+
+    h2 {
+      color: var(--primary);
+      text-shadow: 0 0 5px #00cec9;
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .text-muted {
+      color: #cccccc !important;
+    }
+
+    .pricing-card {
+      background: var(--card-1);
+      color: #1c3a47;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      height: 100%;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .pricing-card:nth-child(2) {
+      background: var(--card-2);
+    }
+
+    .pricing-card:nth-child(3) {
+      background: var(--card-3);
+    }
+
+    .pricing-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .pricing-card .btn {
+      background-color: #1c3a47;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    .pricing-card .btn:hover {
+      background-color: #00cec9;
+      color: #1c3a47;
+    }
+
+    .tag {
+      background-color: #ffdee9;
+      color: #1c3a47;
+      padding: 5px 10px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border-radius: 10px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .toggle-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0;
+      color: var(--text-light);
+    }
+
+    .text-sm {
+      font-size: 0.9rem;
+    }
+
+    .pricing-icon {
+      font-size: 2.7rem;
+      margin-bottom: 1rem;
+      color: #2d3436;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container py-5">
+    <h2 class="text-center fw-bold">Choose your membership</h2>
+    <p class="text-center text-muted">All membership plans come with a <u>30-day satisfaction guarantee</u></p>
+
+    <div class="text-center toggle-switch">
+      <span>Monthly</span>
+      <div class="form-check form-switch d-inline-block">
+        <input class="form-check-input" type="checkbox" id="billingToggle" checked>
+      </div>
+      <span>Yearly <span class="badge bg-success">Save 40%</span></span>
+    </div>
+
+    <div class="row g-4 mt-4 justify-content-center">
+      <div class="col-md-4">
+        <div class="pricing-card">
+          <i class='bx bx-diamond pricing-icon'></i>
+          <h4>Full Access</h4>
+          <p class="text-sm">Complete Package: Masterclasses + Training</p>
+          <p><del>$25</del> <strong>$19/MONTH</strong></p>
+          <p class="text-sm">Billed at $228 USD per year</p>
+          <button class="btn">Select</button>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="pricing-card">
+          <i class='bx bx-brain pricing-icon'></i>
+          <h4>Masterclasses</h4>
+          <p class="text-sm">Educational Courses on Technique, Flexibility, Mindset and more. <a href="#" class="text-info">More Info</a></p>
+          <p><strong>$16/MONTH</strong></p>
+          <p class="text-sm">Billed at $192 USD per year</p>
+          <button class="btn">Select</button>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="pricing-card">
+          <i class='bx bx-dumbbell pricing-icon'></i>
+          <h4>Training</h4>
+          <p class="text-sm">Workouts for Dancers, Ballet Trainings, Yoga, Pilates and more. <a href="#" class="text-info">More Info</a></p>
+          <p><strong>$9/MONTH</strong></p>
+          <p class="text-sm">Billed at $108 USD per year</p>
+          <button class="btn">Select</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact V17</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      display: flex;
+      height: 100vh;
+background-image: url('contact.jpg');
+background-size: cover;
+  background-position: center;
+	
+    }
+    .left {
+      width: 40%;
+      color: white;
+      padding: 50px 30px;
+	margin-top:150px;
+    }
+    .left h3 {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+    }
+     .left p, .left a {
+      margin: 10px 0 30px;
+      display: block;
+
+    }
+    .left a {
+      color: #00cc66;
+      text-decoration: none;
+    }
+    .right {
+      width: 60%;
+      background: white;
+      padding: 50px;
+	
+    }
+    .right h2 {
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .name-fields {
+      display: flex;
+      gap: 10px;
+    }
+    .name-fields input {
+      width: 100%;
+    }
+    button {
+      padding: 12px 20px;
+      background: #00cc66;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+	
+  <div class="left">
+    <h3><i class="fas fa-map-marker-alt"></i> Address</h3>
+    <p>Madac Center 8th floor, 379 Hudson St,<br>New York, NY 10018 US</p>
+
+    <h3><i class="fas fa-phone-alt"></i> Let's Talk</h3>
+    <a href="tel:+18001236879">+91 1234567892</a>
+
+    <h3><i class="fas fa-envelope"></i> General Support</h3>
+    <a href="mailto:contact@example.com">contact@danceaura.com</a>
+  </div>
+
+  <div class="right">
+	
+    <h2>Send Us A Message</h2>
+    <form>
+      <div class="form-group name-fields">
+        <input type="text" placeholder="First name" required>
+        <input type="text" placeholder="Last name" required>
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="Eg. example@gmail.com" required>
+      </div>
+      <div class="form-group">
+        <input type="tel" placeholder="Eg. +91 8000000000">
+      </div>
+      <div class="form-group">
+        <textarea rows="5" placeholder="Write us a message"></textarea>
+      </div>
+      <button type="submit">SEND MESSAGE</button>
+    </form>
+  </div>
+
+</body>
+</html>

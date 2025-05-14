@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Profile - DanceAura</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #f5f5f5;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .profile-header {
+      background-color: #8e44ad;
+      color: white;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      text-align: center;
+    }
+    .course-card {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      background: white;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-4">
+  <div class="profile-header">
+    <h2>Welcome, <span id="studentName">Jane Doe</span></h2>
+    <p>Your Dance Progress Dashboard</p>
+  </div>
+
+  <div id="coursesList" class="mt-4">
+    <!-- Courses will be dynamically loaded here -->
+  </div>
+</div>
+
+<script>
+  const studentName = "Jane Doe";
+  document.getElementById("studentName").textContent = studentName;
+
+  const courses = [
+    {
+      name: "Hip Hop Basics",
+      levels: [100, 100, 60]
+    },
+    {
+      name: "Ballet Beginner",
+      levels: [90, 100, 20]
+    },
+    {
+      name: "Contemporary Flow",
+      levels: [100, 100, 100]
+    }
+  ];
+
+  const coursesContainer = document.getElementById("coursesList");
+
+  courses.forEach((course, index) => {
+    const levelsCompleted = course.levels.filter(l => l >= 100).length;
+
+    const courseCard = document.createElement("div");
+    courseCard.className = "course-card";
+
+    let levelHTML = '';
+    course.levels.forEach((progress, i) => {
+      levelHTML += `
+        <p>Level ${i + 1}</p>
+        <div class="progress mb-2" style="height: 20px;">
+          <div class="progress-bar ${progress >= 100 ? 'bg-success' : 'bg-primary'}" 
+               role="progressbar" style="width: ${progress}%;">
+            ${progress}%
+          </div>
+        </div>
+      `;
+    });
+
+    courseCard.innerHTML = `
+      <h4>${course.name}</h4>
+      ${levelHTML}
+      <div>
+        <label for="feedback${index}">Give your feedback:</label>
+        <textarea id="feedback${index}" class="form-control my-2" rows="3" placeholder="Minimum 30–50 words feedback..." disabled></textarea>
+        <button class="btn btn-primary me-2" id="submitBtn${index}" onclick="submitFeedback(${index}, '${course.name}')" disabled>Submit Feedback</button>
+        <button class="btn btn-success" id="certBtn${index}" onclick="generateCertificate('${course.name}')" ${levelsCompleted >= 2 ? '' : 'disabled'}>Generate Certificate</button>
+      </div>
+      <small class="text-muted">Note: You must complete at least 2 levels (100%) to enable feedback.</small>
+    `;
+
+    coursesContainer.appendChild(courseCard);
+
+    if (levelsCompleted >= 2) {
+      document.getElementById(`feedback${index}`).disabled = false;
+      document.getElementById(`submitBtn${index}`).disabled = false;
+    }
+  });
+
+  function wordCount(text) {
+    return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+  }
+
+  function submitFeedback(index, courseName) {
+    const feedbackEl = document.getElementById(`feedback${index}`);
+    const feedbackText = feedbackEl.value.trim();
+    const wordLen = wordCount(feedbackText);
+
+    if (wordLen < 30 || wordLen > 50) {
+      alert("❌ Feedback must be between 30 to 50 words.");
+      return;
+    }
+
+    alert("✅ Feedback successfully submitted!");
+    feedbackEl.disabled = true;
+    document.getElementById(`submitBtn${index}`).disabled = true;
+    document.getElementById(`certBtn${index}`).disabled = false;
+  }
+
+  function generateCertificate(courseName) {
+    const today = new Date();
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    const formattedDate = today.toLocaleDateString('en-US', options);
+
+    const certHTML = `
+      <html>
+      <head>
+        <title>DanceAura Certificate</title>
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+        <style>
+          body { font-family: 'Segoe UI', sans-serif; padding: 40px; background: #fff; }
+          .certificate {
+            background: #fff;
+            padding: 40px;
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+            position: relative;
+            border: 20px solid transparent;
+            border-image: linear-gradient(to right, #8e44ad, #9b59b6) 30;
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+          }
+          .certificate-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+          }
+          .certificate-header img {
+            width: 50px;
+            margin-right: 12px;
+          }
+          .certificate-header h1 {
+            font-size: 36px;
+            color: #8e44ad;
+            margin: 0;
+            font-weight: bold;
+          }
+          h2 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            font-style: italic;
+            color: #333;
+          }
+          p {
+            font-size: 17px;
+            margin: 10px 0;
+          }
+          .date {
+            margin-top: 30px;
+            font-size: 16px;
+            text-align: left;
+            font-weight: bold;
+          }
+          .signature {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 18px;
+          }
+          .signature img {
+            width: 180px;
+            height: auto;
+          }
+          .instructor-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 24px;
+            margin-top: 5px;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="certificate">
+          <div class="certificate-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/1864/1864509.png" alt="Dance Step Icon">
+            <h1>DanceAura</h1>
+          </div>
+          <h2>CERTIFICATE OF COMPLETION</h2>
+          <p>This certificate is proudly presented to</p>
+          <p><strong>${studentName}</strong></p>
+          <p>for gracefully completing the <strong>Dance Style Learning Program</strong></p>
+          <p>with a specialization in <strong>${courseName}</strong></p>
+          <p>and for demonstrating dedication, rhythm, and expressive performance throughout the course.</p>
+          <p><strong>Achieved Grade: A</strong></p>
+          <div class="date">Date: <strong>${formattedDate}</strong></div>
+          <div class="signature">
+                        <p class="instructor-name">Samantha Roy</p>
+            <p><strong>Course Instructor</strong></p>
+          </div>
+        </div>
+        <script>
+          setTimeout(() => { window.print(); window.close(); }, 1000);
+        <\/script>
+      </body>
+      </html>
+    `;
+
+    const certWindow = window.open("", "_blank");
+    certWindow.document.open();
+    certWindow.document.write(certHTML);
+    certWindow.document.close();
+  }
+</script>
+
+</body>
+</html>

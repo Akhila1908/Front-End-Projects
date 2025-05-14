@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rhythm Beats - About & Reviews</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(to right, #4a1c6f, #1c3a47);
+      --card-1: linear-gradient(145deg, #ff9a9e, #fad0c4);
+      --card-2: linear-gradient(145deg, #a18cd1, #fbc2eb);
+      --card-3: linear-gradient(145deg, #fbc2eb, #a6c1ee);
+      --card-4: linear-gradient(145deg, #c2ffd8, #465e88);
+      --card-5: linear-gradient(145deg, #d4a5ff, #ffc6a0, #a0c4ff);
+
+      --primary: #ffffff;
+      --text-light: #f1f1f1;
+      --shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-light);
+    }
+
+    /* About Section Styles */
+    .about-section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .about-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .about-header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      text-shadow: 0 0 5px #00cec9;
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .about-header span {
+      color: #00cec9;
+    }
+
+    .about-text {
+      text-align: center;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto 3rem auto;
+      line-height: 1.7;
+      color: var(--text-light);
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      animation: fadeInUp 2s ease-out forwards;
+    }
+
+    .feature-card {
+      padding: 1.8rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: #222;
+      background: #fff;
+    }
+
+    .feature-card:nth-child(1) { background: var(--card-1); }
+    .feature-card:nth-child(2) { background: var(--card-2); }
+    .feature-card:nth-child(3) { background: var(--card-3); }
+    .feature-card:nth-child(4) { background: var(--card-4); color: #fff;}
+    .feature-card:nth-child(5) { background: var(--card-5); }
+
+    .feature-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+
+    .feature-card i {
+      font-size: 2.7rem;
+      margin-bottom: 1rem;
+      color: #2d3436;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0.7rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .feature-card p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Reviews Section Styles */
+    .review-section {
+      padding: 4rem 1rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .review-section h2 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      text-shadow: 0 0 5px #00cec9;
+    }
+
+    .review-section p.intro {
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 3rem auto;
+      font-size: 1.1rem;
+      color: var(--text-light);
+    }
+
+    .review-card {
+      padding: 2rem;
+      border-radius: 20px;
+      color: #222;
+      background: #fff;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .review-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .review-stars {
+      color: #ffd700;
+      font-size: 1.3rem;
+      margin: 0.5rem 0;
+    }
+
+    .review-card:nth-child(1) .review-stars { color: #ff5733; }
+    .review-card:nth-child(2) .review-stars { color: #3c8d2f; }
+    .review-card:nth-child(3) .review-stars { color: #4a69bd; }
+    .review-card:nth-child(4) .review-stars { color: #ffbf00; }
+    .review-card:nth-child(5) .review-stars { color: #b24b88; }
+
+    .source-logo {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #00b67a;
+    }
+
+    .carousel-inner .row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .carousel-item {
+      padding: 1rem;
+    }
+
+    .col-md-4 {
+      flex: 0 0 30%;
+      display: flex;
+    }
+
+    /* Unique background colors for review cards */
+    .review-card:nth-child(1) { background: var(--card-1); }
+    .review-card:nth-child(2) { background: var(--card-2); }
+    .review-card:nth-child(3) { background: var(--card-3); }
+    .review-card:nth-child(4) { background: var(--card-4); color: #fff; }
+    .review-card:nth-child(5) { background: var(--card-5); }
+
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about-header h1 {
+        font-size: 2.2rem;
+      }
+      .about-text {
+        font-size: 1rem;
+      }
+      .review-section h2 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="about-header">
+      <h1>About <span>Us</span></h1>
+      <p class="about-text">
+        Welcome to <strong>Rhythm Beats</strong> – where movement becomes expression.  
+        Our passion is dance, and our mission is to empower, inspire, and move hearts through rhythm, grace, and creativity. From stage to studio, we turn every step into a story.
+      </p>
+    </div>
+
+    <div class="features">
+      <div class="feature-card">
+        <i class='bx bx-music'></i>
+        <h3>Diverse Dance Styles</h3>
+        <p>From classical to contemporary, hip-hop to salsa – find your groove with us.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class='bx bx-calendar-event'></i>
+        <h3>Live Performances</h3>
+        <p>Showcase your passion at events, fests, and cultural celebrations.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class='bx bx-user-voice'></i>
+        <h3>Pro Choreographers</h3>
+        <p>Learn from trained professionals who mentor and motivate at every level.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class='bx bx-child'></i>
+        <h3>All Age Programs</h3>
+        <p>Our classes suit kids, teens, adults, and seniors — dance has no age limit.</p>
+      </div>
+
+      <div class="feature-card">
+        <i class='bx bx-group' style="color: #000000;"></i>
+        <h3>Workshops & Events</h3>
+        <p>Engage in seasonal programs and community showcases to shine on stage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="review-section">
+    <h2>What Our Dancers Say</h2>
+    <p class="intro">
+      Real voices. Real impact. Our dancers share their transformative journeys — how Rhythm Beats has helped them build confidence, improve technique, and feel more connected through dance.
+    </p>
+
+    <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="review-card">
+                <strong>Elisa Monteiro</strong>
+                <div class="review-stars">★★★★★</div>
+                <p>Fantastic app, with lots of dance and workout classes to choose from. Very good teachers. Excellent customer care.</p>
+                <div class="source-logo">Trustpilot</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="review-card">
+                <strong>Mienchenbienchen</strong>
+                <div class="review-stars">★★★★★</div>
+                <p>Highly recommended! The app is really inspiring and makes you want to learn more and more dances!</p>
+                <div class="source-logo">App Store</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="review-card">
+                <strong>Anna L.</strong>
+                <div class="review-stars">★★★★★</div>
+                <p>Even though I'm not a ballet dancer, I still find the content very useful for my overall education and growth as an amateur dancer.</p>
+                <div class="source-logo">Google Play</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="review-card">
+                <strong>Josie</strong>
+                <div class="review-stars">★★★★</div>
+                <p>It is a very well structured class, that shows all important content you need to know about dancing.</p>
+                <div class="source-logo">Trustpilot</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="review-card">
+                <strong>Friederike2021</strong>
+                <div class="review-stars">★★★★★</div>
+                <p>I'm thrilled! I'm not a professional dancer, but these lessons really keen to start dancing again. Very good, cinematic atmosphere.</p>
+                <div class="source-logo">App Store</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="review-card">
+                <strong>James L.</strong>
+                <div class="review-stars">★★★★★</div>
+                <p>Incredible platform! I feel stronger, more graceful, and more confident after just a few weeks.</p>
+                <div class="source-logo">Google Play</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

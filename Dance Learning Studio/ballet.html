@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ballet Dance Classes</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: sans-serif;
+      padding: 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: #00ffc3;
+      margin-top: 2rem;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.3rem;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #1e1e1e;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .card iframe {
+      width: 100%;
+      height: 180px;
+      display: block;
+      border: none;
+    }
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .tags-bar {
+      margin: 0.5rem 0;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #fff;
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      margin-right: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    .badge.level { background: #ff6a00; color: #fff; }
+    .badge.moves { background: #000; color: #fff; }
+    .badge.choreo { background: #4a148c; color: #fff; }
+    .badge.technique { background: #00695c; color: #fff; }
+
+    .description {
+      font-size: 0.8rem;
+      color: #ccc;
+      margin-top: 0.3rem;
+    }
+
+    .menu-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .menu {
+      position: absolute;
+      top: 35px;
+      right: 10px;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 6px;
+      display: none;
+      flex-direction: column;
+      z-index: 10;
+      width: 160px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+
+    .menu.show {
+      display: flex;
+    }
+
+    .menu div {
+      padding: 0.7rem 1rem;
+      font-size: 0.85rem;
+      border-bottom: 1px solid #333;
+      cursor: pointer;
+    }
+
+    .menu div:last-child {
+      border-bottom: none;
+    }
+
+    .menu div:hover {
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Ballet Dance Classes</h1>
+
+<h2>Beginner</h2>
+<div class="container" id="beginner"></div>
+
+<h2>Intermediate</h2>
+<div class="container" id="intermediate"></div>
+
+<h2>Advanced</h2>
+<div class="container" id="advanced"></div>
+
+<script>
+  const classes = [
+    // Beginner
+    { title: "Tic Tac Toe Skip", level: "Beginner", duration: "5 min", type: "Moves", tags: ["Ballet", "Mr. YouTube", "Free Class"], videoUrl: "https://www.youtube.com/embed/6Fz27G6WwWw" },
+    { title: "Twist and Wop", level: "Beginner", duration: "3 min", type: "Moves", tags: ["Ballet", "Free Class"], videoUrl: "https://www.youtube.com/embed/IBesu6wVsRs" },
+    { title: "Kiss of Death", level: "Beginner", duration: "6 min", type: "Moves", tags: ["Ballet", "Moves"], videoUrl: "https://www.youtube.com/embed/MBHDpi915aw" },
+    { title: "Swiss Bop", level: "Beginner", duration: "4 min", type: "Moves", tags: ["Ballet", "Fundamentals"], videoUrl: "https://www.youtube.com/embed/M1-5pSprSVg" },
+
+    // Intermediate
+    { title: "FL Litefeet Anthem", level: "Intermediate", duration: "12 min", type: "Choreography", tags: ["Ballet", "Beat Luck"], videoUrl: "https://www.youtube.com/embed/M1-5pSprSVg" },
+    { title: "Day 10: Performance", level: "Intermediate", duration: "12 min", type: "Choreography", tags: ["Ballet", "Saucha Stretch"], videoUrl: "https://www.youtube.com/embed/z5ugeiDqKpQ" },
+    { title: "Day 9: Signature", level: "Intermediate", duration: "10 min", type: "Technique", tags: ["Fundamentals"], videoUrl: "https://www.youtube.com/embed/vdte8yH9bCA" },
+    { title: "Day 8: Vocabulary", level: "Intermediate", duration: "10 min", type: "Technique", tags: ["Fundamentals"], videoUrl: "https://www.youtube.com/embed/XviGhhR65_U" },
+
+    // Advanced
+    { title: "Battle Prep", level: "Advanced", duration: "15 min", type: "Moves", tags: ["Ballet", "Advanced", "Challenge"], videoUrl: "https://www.youtube.com/embed/iaO9cYYMEOE" },
+    { title: "Groove Combo Pro", level: "Advanced", duration: "13 min", type: "Choreography", tags: ["Ballet", "Advanced"], videoUrl: "https://www.youtube.com/embed/gJvEsVuu2Ug" },
+    { title: "Elite Drill", level: "Advanced", duration: "14 min", type: "Technique", tags: ["Ballet", "Footwork"], videoUrl: "https://www.youtube.com/embed/3TLSrI_hXEw" },
+    { title: "Precision Moves", level: "Advanced", duration: "11 min", type: "Moves", tags: ["Ballet"], videoUrl: "https://www.youtube.com/embed/eBjtGBLGc3A" }
+  ];
+
+  function renderLevel(levelId, levelName) {
+    const container = document.getElementById(levelId);
+    const filtered = classes.filter(c => c.level === levelName);
+    filtered.forEach((c, i) => {
+      const id = `${levelId}-menu-${i}`;
+      container.innerHTML += `
+        <div class="card">
+          <iframe src="${c.videoUrl}" allowfullscreen></iframe>
+          <button class="menu-button" onclick="toggleMenu('${id}')">&#8942;</button>
+          <div class="menu" id="${id}">
+            <div>▶ Preview Class</div>
+            <div>⤴ Share Class</div>
+            <div>Go to Style</div>
+            <div>Go to Level</div>
+            <div>Go to Instructor</div>
+          </div>
+          <div class="card-content">
+            <div class="tags-bar">
+              <span class="badge level">${c.level}</span>
+              <span class="badge">${c.duration}</span>
+              <span class="badge ${c.type.toLowerCase()}">${c.type}</span>
+            </div>
+            <h3>${c.title}</h3>
+            <div class="description">${c.tags.join(" • ")}</div>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  function toggleMenu(id) {
+    document.querySelectorAll('.menu').forEach(m => {
+      if (m.id === id) m.classList.toggle("show");
+      else m.classList.remove("show");
+    });
+  }
+
+  document.addEventListener("click", function(e) {
+    if (!e.target.classList.contains("menu-button")) {
+      document.querySelectorAll('.menu').forEach(m => m.classList.remove("show"));
+    }
+  });
+
+  renderLevel("beginner", "Beginner");
+  renderLevel("intermediate", "Intermediate");
+  renderLevel("advanced", "Advanced");
+</script>
+
+</body>
+</html>

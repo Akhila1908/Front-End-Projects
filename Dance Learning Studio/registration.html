@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dance Registration Form</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      max-width: 650px;
+      width: 90%;
+      border-radius: 12px;
+      color: #333;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #0056b3;
+      font-size: 26px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+      width: 100%;
+      padding: 10px 10px 10px 40px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #777;
+    }
+
+    .input-group textarea {
+      resize: vertical;
+    }
+
+    .input-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .input-row .input-group {
+      flex: 1 1 48%;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #0056b3;
+      outline: none;
+    }
+
+    .gender {
+      margin: 15px 0;
+    }
+
+    .gender label {
+      margin-right: 15px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background-color: #003d80;
+    }
+
+    h3 {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    label {
+      display: inline-block;
+      margin-bottom: 6px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .input-row .input-group {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Dance Registration Form</h1>
+    <form  onsubmit="event.preventDefault(); alert('Registration Successful!');">
+      <div class="input-row">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="First Name" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Last Name" required />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="required" for="email">Email</label>
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="email" name="email" placeholder="example@domain.com" required
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          title="Please enter a valid email address" />
+      </div>
+
+      <div class="input-group">
+        <label class="required" for="phone">Phone</label>
+        <i class="fas fa-phone"></i>
+        <input type="tel" id="phone" name="phone" placeholder="1234567890" required
+          pattern="^\d{10}$" title="Phone number must be exactly 10 digits" />
+      </div>
+
+      <div class="gender">
+<label style="font-size:20px">Gender : </label>
+        <label><input type="radio" name="gender" /> Male</label>
+        <label><input type="radio" name="gender" /> Female</label>
+        <label><input type="radio" name="gender" /> Other</label>
+      </div>
+
+      <h3>Address</h3>
+
+      <div class="input-group">
+        <i class="fas fa-home"></i>
+        <input type="text" placeholder="Street Address" required />
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-home"></i>
+        <input type="text" placeholder="Street Address Line 2" />
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <i class="fas fa-city"></i>
+          <input type="text" placeholder="City" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-map-marker-alt"></i>
+          <input type="text" placeholder="Region" required />
+        </div>
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <i class="fas fa-mail-bulk"></i>
+          <input type="text" placeholder="Postal / Zip Code" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-flag"></i>
+          <select required>
+            <option value="">Country</option>
+            <option>India</option>
+             <option>UK</option>
+            <option>USA</option>
+            <option>Canada</option>
+            <option>Australia</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-music"></i>
+        <select id="dance-type" name="dance-type" required>
+          <option value="">Hip Hop</option>
+          <option value="Salsa">Salsa</option>
+          <option value="Bachata">Ballet</option>
+          <option value="Tango">K-pop</option>
+          <option value="Hip Hop">Hip Hop</option>
+          <option value="Club">Zumba</option>
+          <option value="Other">Belly dance</option>
+          <option value="Other">Kuchipudi</option>
+          <option value="Other">Bharatanatyam</option>
+          <option value="Other">Kathak</option>
+          <option value="Other">Aerobics</option>
+          <option value="Other">Grabha</option>
+          <option value="Other">Dandiya</option>
+          <option value="Other">Bangra</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-calendar-alt"></i>
+        <input type="date" id="start-date" name="start-date" required>
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-clock"></i>
+        <input type="time" id="start-time" name="start-time" required>
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-comment-dots"></i>
+        <textarea id="comments" name="comments" rows="6" placeholder="Enter any additional comments..."></textarea>
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</body>
+</html>
